@@ -45,6 +45,25 @@ class ProductSchema(marshmallow.schema):
 product_schema = ProductSchema(strict=True)
 products_schema = ProductSchema(many=True, strict=True)
 
+
+# Create a Product
+@app.route('/product', methods=['POST'])
+def add_product():
+    name = request.json['name']
+    description = request.json['description']
+    price = request.json['price']
+    qty = request.json['qty']
+
+    new_product = ProductSchema(name, description, price, qty)
+
+    db.session.add(new_product)
+    db.session.commit()
+
+    return product_schema.jsonify(new_product)
+
+
 # Run Server
 if __name__ == '__main__':
     app.run(debug=True)
+
+# Having issues creating database
