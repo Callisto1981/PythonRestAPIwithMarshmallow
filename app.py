@@ -35,6 +35,16 @@ class Product(db.Model):
         self.qty = qty
 
 
+# Product Schema
+class ProductSchema(marshmallow.schema):
+    class Meta:
+        fields = ('id', 'name', 'description', 'price', 'qty')
+
+
+# Init Schema
+product_schema = ProductSchema(strict=True)
+product_schema = ProductSchema(many=True, strict=True)
+
 # Run Server
 if __name__ == '__main__':
     app.run(debug=True)
