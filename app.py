@@ -17,7 +17,7 @@ db = SQLAlchemy(app)
 
 
 # Initialize marshmallow
-ma = marshmallow(app)
+ma = marshmallow
 
 
 # Product Class/Model
@@ -43,7 +43,7 @@ class ProductSchema(marshmallow.schema):
 
 # Init Schema
 product_schema = ProductSchema(strict=True)
-product_schema = ProductSchema(many=True, strict=True)
+products_schema = ProductSchema(many=True, strict=True)
 
 # Run Server
 if __name__ == '__main__':
